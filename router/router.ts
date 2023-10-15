@@ -6,6 +6,7 @@ import {
   getContactByAlphabet,
   getContactByCategory,
   updateContactDetails,
+  deleteContact,
 } from "../controller/userController";
 
 const router = express.Router();
@@ -16,6 +17,6 @@ router.route("/:contactCategory/view-category").get(getContactByCategory);
 router.route("/:contactAvatar/view-alpha").get(getContactByAlphabet);
 router.route("/:contactID/view-one").get(getAContact);
 router.route("/:contactID/update-one").patch(updateContactDetails);
-router.route("/:contactID/delete-one").delete(updateContactDetails);
+router.route("/:contactID/delete-one").delete(deleteContact);
 
 export default router;
