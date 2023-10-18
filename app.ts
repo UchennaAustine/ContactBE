@@ -5,14 +5,8 @@ import user from "./router/router";
 export const App = (app: Application) => {
   try {
     app.use(express.json());
-    app.use("/api", user);
+    app.use(cors());
 
-    app.use(
-      cors({
-        origin: "*",
-        methods: ["GET", "POST", "PATCH", "DELETE"],
-      })
-    );
     app.get("/", (req: Request, res: Response) => {
       try {
         return res.status(200).json({
@@ -24,6 +18,7 @@ export const App = (app: Application) => {
         });
       }
     });
+    app.use("/api", user);
   } catch (error: any) {
     console.log(`Application Error: ${error}`);
   }
